@@ -1,0 +1,138 @@
+[
+  {
+    "line": 20,
+    "elements": [
+      {
+        "line": 23,
+        "name": "User is on Home Page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 13070690500,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "The user has opened the home page \"http://automationpractice.com/index.php\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"http://automationpractice.com/index.php\"",
+                  "offset": 34
+                }
+              ],
+              "location": "StepDefinitions.StepsAddToCart.the_user_has_opened_the_home_page(java.lang.String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-01-01T18:31:46.078Z",
+        "line": 27,
+        "name": "Add top 2 best sellet to cart directly from homepage",
+        "description": "",
+        "id": "add-to-cart;add-top-2-best-sellet-to-cart-directly-from-homepage",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 17651100,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "The user is on application home page",
+            "match": {
+              "location": "StepDefinitions.StepsAddToCart.the_user_is_on_application_home_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 124797400,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "The user clicks on \"Best Sellers\" tab",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Best Sellers\"",
+                  "offset": 19
+                }
+              ],
+              "location": "StepDefinitions.StepsAddToCart.the_user_clicks_on_tab(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 6357648700,
+              "status": "passed"
+            },
+            "line": 30,
+            "name": "The user clicks on \"Add to cart\" for \"2\" items",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Add to cart\"",
+                  "offset": 19
+                },
+                {
+                  "val": "\"2\"",
+                  "offset": 37
+                }
+              ],
+              "location": "StepDefinitions.StepsAddToCart.the_user_clicks_on_for_items(java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2254606600,
+              "status": "passed"
+            },
+            "line": 31,
+            "name": "The cart should have \"2\" items in it",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"2\"",
+                  "offset": 21
+                }
+              ],
+              "location": "StepDefinitions.StepsAddToCart.the_cart_should_have_items_in_it(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@tag"
+          },
+          {
+            "name": "@tag1"
+          }
+        ]
+      }
+    ],
+    "name": "Add to cart",
+    "description": "  I want to test Add to cart funtionality",
+    "id": "add-to-cart",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/TestScripts/TestAddToCart.feature",
+    "tags": [
+      {
+        "name": "@tag",
+        "type": "Tag",
+        "location": {
+          "line": 19,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
