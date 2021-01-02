@@ -111,6 +111,8 @@ public class StepsAddToCart {
 		String productsInCart = driver.findElement(By.xpath("//div[@class='shopping_cart']/.//span[starts-with(@class, 'ajax_cart_quantity')]")).getText();
 		//String productsInCart = productList.get(0).getAttribute("innerHTML");
 		logger.info("Products in cart:::" + productsInCart);
+		driver.close();
+		driver.quit();
 		Assert.assertEquals("Number of products not equal, Cart has :" + productsInCart , "2", productsInCart);
 	}
 
