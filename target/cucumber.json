@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 15721843900,
+              "duration": 14131509300,
               "status": "passed"
             },
             "line": 24,
@@ -30,7 +30,7 @@
         ]
       },
       {
-        "start_timestamp": "2021-01-02T20:06:39.625Z",
+        "start_timestamp": "2021-01-02T20:45:10.608Z",
         "line": 27,
         "name": "Add top 2 best sellet to cart directly from homepage",
         "description": "",
@@ -40,7 +40,7 @@
         "steps": [
           {
             "result": {
-              "duration": 16832000,
+              "duration": 24727700,
               "status": "passed"
             },
             "line": 28,
@@ -52,7 +52,7 @@
           },
           {
             "result": {
-              "duration": 182794800,
+              "duration": 172002800,
               "status": "passed"
             },
             "line": 29,
@@ -70,7 +70,7 @@
           },
           {
             "result": {
-              "duration": 7096519300,
+              "duration": 7054358400,
               "status": "passed"
             },
             "line": 30,
@@ -92,7 +92,7 @@
           },
           {
             "result": {
-              "duration": 3146517800,
+              "duration": 3241737000,
               "status": "passed"
             },
             "line": 31,
