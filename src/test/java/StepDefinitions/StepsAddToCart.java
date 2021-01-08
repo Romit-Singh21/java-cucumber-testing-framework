@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
+import DataProviders.ConfigFileReader;
+import Managers.FileReaderManager;
 import Managers.PageObjectManagers;
 import Pages.LandingPage;
 import io.cucumber.java.en.And;
@@ -21,13 +23,14 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class StepsAddToCart {
 	public WebDriver driver;
-	public PageObjectManagers pageObjectManager; 
+	public PageObjectManagers pageObjectManager;
 	public LandingPage landingPage;
 	public static final Logger logger = LogManager.getLogger();
 	
 	@Given("The user has opened the home page {string}")
 	public void the_user_has_opened_the_home_page(String string) {
 		logger.info("Opening the home page " + string);
+		logger.info("The browser type from config file is: " + FileReaderManager.getInstance().getConfigReader().getBrowserType());
 		//WebDriverManager.chromedriver().setup();
 		WebDriverManager.edgedriver().setup();
 	    driver = new EdgeDriver();
@@ -35,8 +38,8 @@ public class StepsAddToCart {
 	    landingPage = pageObjectManager.getLandingPage();
 	    driver.get(string);
 	    driver.manage().window().maximize();
-	    driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-	    driver.manage().timeouts().implicitlyWait(30,  TimeUnit.SECONDS); 
+	    driver.manage().timeouts().pageLoadTimeout(FileReaderManager.getInstance().getConfigReader().getImplicitWaitTime(), TimeUnit.SECONDS);
+	    driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getPageLoadTimeout(),  TimeUnit.SECONDS); 
 	}
 	
 	@Given("The user is on application home page")
