@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LandingPage {
 	
-	WebDriver driver;
+	private WebDriver driver;
 	public LandingPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

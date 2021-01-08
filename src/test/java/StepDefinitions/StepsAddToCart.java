@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
+import Managers.PageObjectManagers;
 import Pages.LandingPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -20,6 +21,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class StepsAddToCart {
 	public WebDriver driver;
+	public PageObjectManagers pageObjectManager; 
 	public LandingPage landingPage;
 	public static final Logger logger = LogManager.getLogger();
 	
@@ -29,7 +31,8 @@ public class StepsAddToCart {
 		//WebDriverManager.chromedriver().setup();
 		WebDriverManager.edgedriver().setup();
 	    driver = new EdgeDriver();
-	    landingPage = new LandingPage(driver);
+	    pageObjectManager = new PageObjectManagers(driver);
+	    landingPage = pageObjectManager.getLandingPage();
 	    driver.get(string);
 	    driver.manage().window().maximize();
 	    driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
