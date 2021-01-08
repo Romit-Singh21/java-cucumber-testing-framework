@@ -30,6 +30,9 @@ public class LandingPage {
 	@FindBy(xpath = "//span[@title='Continue shopping']")
 	private WebElement confiramtionWindowContinueShoppinfBtn;
 	
+	@FindBy(xpath = "//div[@class='shopping_cart']/.//span[starts-with(@class, 'ajax_cart_quantity')]")
+	private WebElement numberOfProductsInCart;
+	
 	public String getPageTitle() {
 		return driver.getTitle();
 	}
@@ -62,6 +65,12 @@ public class LandingPage {
 	public void clickOnContinueShopping() {
 		this.waitTillElementAvailable(confiramtionWindowContinueShoppinfBtn);
 		confiramtionWindowContinueShoppinfBtn.click();
+	}
+	
+	public String getNumberOfProductsInCart() {
+		//"/.//" means "look under the selected element".
+		this.scrollToElement(numberOfProductsInCart);
+		return numberOfProductsInCart.getText();
 	}
 	
 	private void waitTillElementAvailable(WebElement element) {
