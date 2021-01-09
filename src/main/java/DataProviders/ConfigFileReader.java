@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import Enums.BrowserTypes;
+import Enums.EnvironmentTypes;
+
 public class ConfigFileReader {
 	private Properties property;
 	private static final String porpertyLocation = "Configs/Configuration.properties";
@@ -23,9 +26,13 @@ public class ConfigFileReader {
 		}
 	}
 	
-	public String getBrowserType() {
+	public BrowserTypes getBrowserType() {
 		String browser = property.getProperty("browser");
-		return (browser == null)? "chrome" : browser;
+		if(browser == null || browser.equalsIgnoreCase("chrome")) return BrowserTypes.CHROME;
+		else if(browser.equalsIgnoreCase("FireFox")) return BrowserTypes.FIREFOX;
+		else if(browser.equalsIgnoreCase("Edge")) return BrowserTypes.EDGE;
+		else if(browser.equalsIgnoreCase("internetexplorer")) return BrowserTypes.INTERNETEXPLORER;
+		else throw new RuntimeException("Unsupported Browser Type " + browser);
 	}
 	
 	public Long getImplicitWaitTime() {
@@ -39,5 +46,14 @@ public class ConfigFileReader {
 		if(pageLoadTimeout != null) return Long.parseLong(pageLoadTimeout);
 		else throw new RuntimeException("PageLoad timeout value not defined");
 	}
+	
+	public EnvironmentTypes getEnvironmentType() {
+		String environmentType = property.getProperty("environment");
+		
+		if(environmentType.equalsIgnoreCase("local")) return EnvironmentTypes.LOCAL;
+		else if(environmentType.equalsIgnoreCase("remote")) return EnvironmentTypes.REMOTE;
+		else throw new RuntimeException("Environment not specified");
+	}
+	
 
 }

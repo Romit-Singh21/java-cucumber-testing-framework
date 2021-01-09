@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 import DataProviders.ConfigFileReader;
+import Managers.BrowserManager;
 import Managers.FileReaderManager;
 import Managers.PageObjectManagers;
 import Pages.LandingPage;
@@ -24,6 +25,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class StepsAddToCart {
 	public WebDriver driver;
 	public PageObjectManagers pageObjectManager;
+	public BrowserManager browserManager;
 	public LandingPage landingPage;
 	public static final Logger logger = LogManager.getLogger();
 	
@@ -32,8 +34,10 @@ public class StepsAddToCart {
 		logger.info("Opening the home page " + string);
 		logger.info("The browser type from config file is: " + FileReaderManager.getInstance().getConfigReader().getBrowserType());
 		//WebDriverManager.chromedriver().setup();
-		WebDriverManager.edgedriver().setup();
-	    driver = new EdgeDriver();
+		//WebDriverManager.edgedriver().setup();
+	    //driver = new EdgeDriver();
+		browserManager = new BrowserManager();
+		driver = browserManager.getDriver();
 	    pageObjectManager = new PageObjectManagers(driver);
 	    landingPage = pageObjectManager.getLandingPage();
 	    driver.get(string);
