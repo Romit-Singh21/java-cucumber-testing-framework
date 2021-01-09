@@ -1,49 +1,36 @@
 package StepDefinitions;
 
 
-import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 
-import DataProviders.ConfigFileReader;
 import Managers.BrowserManager;
 import Managers.FileReaderManager;
 import Managers.PageObjectManagers;
 import Pages.LandingPage;
+import cucumberHelpers.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class StepsAddToCart {
-	public WebDriver driver;
-	public PageObjectManagers pageObjectManager;
-	public BrowserManager browserManager;
+	
+	public TestContext testContext;
 	public LandingPage landingPage;
 	public static final Logger logger = LogManager.getLogger();
+	
+	public StepsAddToCart(TestContext context) {
+		testContext = context;
+		landingPage = testContext.getPageObjectManagers().getLandingPage();
+	}
 	
 	@Given("The user has opened the home page {string}")
 	public void the_user_has_opened_the_home_page(String string) {
 		logger.info("Opening the home page " + string);
 		logger.info("The browser type from config file is: " + FileReaderManager.getInstance().getConfigReader().getBrowserType());
-		//WebDriverManager.chromedriver().setup();
-		//WebDriverManager.edgedriver().setup();
-	    //driver = new EdgeDriver();
-		browserManager = new BrowserManager();
-		driver = browserManager.getDriver();
-	    pageObjectManager = new PageObjectManagers(driver);
-	    landingPage = pageObjectManager.getLandingPage();
-	    driver.get(string);
-	    driver.manage().window().maximize();
-	    driver.manage().timeouts().pageLoadTimeout(FileReaderManager.getInstance().getConfigReader().getImplicitWaitTime(), TimeUnit.SECONDS);
-	    driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getPageLoadTimeout(),  TimeUnit.SECONDS); 
+		landingPage.openLandingPage(string);
 	}
 	
 	@Given("The user is on application home page")
@@ -76,12 +63,8 @@ public class StepsAddToCart {
 	@Then("The cart should have {string} items in it")
 	public void the_cart_should_have_items_in_it(String string) {
 		logger.info("Checking the cart");
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("window.scrollTo(0,0)");
 		String productsInCart = landingPage.getNumberOfProductsInCart();
 		logger.info("Products in cart:::" + productsInCart);
-		driver.close();
-		driver.quit();
 		Assert.assertEquals("Number of products not equal, Cart has :" + productsInCart , "2", productsInCart);
 	}
 

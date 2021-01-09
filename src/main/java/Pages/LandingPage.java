@@ -33,6 +33,10 @@ public class LandingPage {
 	@FindBy(xpath = "//div[@class='shopping_cart']/.//span[starts-with(@class, 'ajax_cart_quantity')]")
 	private WebElement numberOfProductsInCart;
 	
+	public void openLandingPage(String landingPage) {
+		driver.get(landingPage);
+	}
+	
 	public String getPageTitle() {
 		return driver.getTitle();
 	}
