@@ -13,6 +13,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import Utility.Log;
+
 public class LandingPage {
 	
 	private WebDriver driver;
@@ -34,31 +36,38 @@ public class LandingPage {
 	private WebElement numberOfProductsInCart;
 	
 	public void openLandingPage(String landingPage) {
+		Log.info("Opening the landing page :::" + landingPage);
 		driver.get(landingPage);
 	}
 	
 	public String getPageTitle() {
+		Log.info("Getting title of the page");
 		return driver.getTitle();
 	}
 	
 	public void clickOnBestSellerTab() {
+		Log.info("Clicking on Best Seller button");
 		this.waitTillElementAvailable(bestSellerBtn);
 		bestSellerBtn.click();
 	}
 	
 	public int getTotalNumberOfBestSellerProducts() {
-		return bestSellerProductList.size();
+		int size = bestSellerProductList.size();
+		Log.info("Getting best seller product list size as :" + size);
+		return size;
 	}
 	
 	public void pointToProductNumber(int num) {
 		if(num > this.getTotalNumberOfBestSellerProducts()) throw new RuntimeException("Element requested to point is not available");
 		WebElement element = bestSellerProductList.get(num);
+		Log.info("moving to element: " + element.toString());
 		this.scrollToElement(element);
 		this.pointToElement(element);
 	}
 	
 	public void clickOnAddToCartOfBestSellerProductNo(int num) {
 		if(num > this.getTotalNumberOfBestSellerProducts()) throw new RuntimeException("Element requested to point is not available");
+		Log.info("Adding element to cart");
 		WebElement product = bestSellerProductList.get(num);
 		WebElement addToCart = product.findElement(By.className("right-block"));
 		
@@ -67,12 +76,14 @@ public class LandingPage {
 	}
 	
 	public void clickOnContinueShopping() {
+		Log.info("Clicking on continue shopping");
 		this.waitTillElementAvailable(confiramtionWindowContinueShoppinfBtn);
 		confiramtionWindowContinueShoppinfBtn.click();
 	}
 	
 	public String getNumberOfProductsInCart() {
 		//"/.//" means "look under the selected element".
+		Log.info("Getting number of products in cart");
 		this.scrollToElement(numberOfProductsInCart);
 		return numberOfProductsInCart.getText();
 	}
