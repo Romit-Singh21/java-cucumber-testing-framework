@@ -5,9 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 
-import Managers.BrowserManager;
 import Managers.FileReaderManager;
-import Managers.PageObjectManagers;
 import Pages.LandingPage;
 import cucumberHelpers.TestContext;
 import io.cucumber.java.en.And;
