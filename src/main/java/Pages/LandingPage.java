@@ -38,7 +38,7 @@ public class LandingPage extends BasePageObject {
 	
 	public String getPageTitle() {
 		Log.info("Getting title of the page");
-		return getPageTitle();
+		return getTitleOfPage();
 	}
 	
 	public void clickOnBestSellerTab() {
@@ -63,8 +63,7 @@ public class LandingPage extends BasePageObject {
 		if(num > this.getTotalNumberOfBestSellerProducts()) throw new RuntimeException("Element requested to point is not available");
 		Log.info("Adding element to cart");
 		WebElement product = bestSellerProductList.get(num);
-		WebElement addToCart = product.findElement(By.className("right-block"));
-		
+		WebElement addToCart = product.findElement(By.className("right-block"));		
 		clickOn(addToCart);
 	}
 	

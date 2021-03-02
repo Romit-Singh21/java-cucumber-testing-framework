@@ -22,7 +22,7 @@ public class BasePageObject {
 		driver.get(url);
 	}
 	
-	public String getPageTitle() {
+	public String getTitleOfPage() {
 		Log.info("Getting page title");
 		return driver.getTitle();
 	}
